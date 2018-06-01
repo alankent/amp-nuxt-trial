@@ -199,20 +199,20 @@
       <p>Some text</p>
     </main>
 
-    <Footer/>
+    <TheFooter/>
   </div>
 </template>
 
 <script>
 import HeroImage from '~/components/HeroImage.vue'
-import Header from '~/components/Header.vue'
-import Footer from '~/components/Footer.vue'
+import TheHeader from '~/components/TheHeader.vue'
+import TheFooter from '~/components/TheFooter.vue'
 
 export default {
   components: {
     HeroImage,
-    Header,
-    Footer,
+    TheHeader,
+    TheFooter,
   },
 }
 </script>
