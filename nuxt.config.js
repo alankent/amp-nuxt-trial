@@ -13,7 +13,11 @@ const modifyHtml = (html) => {
 
   // TODO: Better to throw an error than secretly discard?
   // Remove every script tag from generated HTML
-  html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+  //html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+  // TODO: HACK. This version tries to get rid of scripts at bottom of file, but not scripts in the <head>.
+  //html = html.replace(/<script type="text\/javascript">window.__NUXT__.*<\/body>/gi, '</body>')
+  // TODO: HACK. This version tries to get rid of scripts at bottom of file, but not scripts in the <head>.
+  html = html.replace(/(?:<script[^>]*>[^<]*<\/script>\s*)+<\/body>/gi, '</body>')
 
   return html
 }
