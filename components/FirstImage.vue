@@ -5,7 +5,7 @@
 </div>
 </template>
 
-<style>
+<style scoped>
 .my-image {
   border: 3px solid green;
 }

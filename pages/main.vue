@@ -70,7 +70,7 @@
 
 -->
 
-    <Header/>
+    <TheHeader/>
 
     <!-- Parallax scrolled hero image -->
     <HeroImage/>

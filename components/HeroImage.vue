@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .image-window {
   position: relative;
   overflow: hidden;

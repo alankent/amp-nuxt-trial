@@ -27,7 +27,7 @@
     </header>
 </template>
 
-<style>
+<style scoped>
 
 .headerbar {
   padding-left: 1rem;
