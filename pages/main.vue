@@ -143,9 +143,10 @@
         </TabContent>
         <TabButton option="b">Second Tab</TabButton>
         <TabContent>
+          <div>SECOND TAB CONTENTS</div>
 
           <div hidden> -- amp-access
-            <input type="text" placeholder="Enter your comment"></input>
+            <input type="text" placeholder="Enter your comment">
             <button>send</button>
           </div>
 
@@ -153,8 +154,6 @@
           <amp-live-list>
           </amp-live-list>
           -->
-
-<div>SECOND TAB CONTENTS</div>
 
         </TabContent>
       </TabList>

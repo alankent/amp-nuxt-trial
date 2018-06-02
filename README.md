@@ -1,6 +1,10 @@
 # amp-nuxt-trial
 
-> My delightful Nuxt.js project
+Building up an AMP demo using Nuxt. This is still very much a work in progress (not fully working).
+
+The main page is currently 'main.vue' which you access via http://localhost:3000/main.
+
+The main directories of interest are 'pages' and 'components' which are referenced from pages.
 
 ## Build Setup
 
