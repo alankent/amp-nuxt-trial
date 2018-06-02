@@ -1,3 +1,5 @@
+<!-- Display a full width image with parallax scroll. -->
+
 <template>
   <div>
     <!-- Parallax scrolled hero image -->
@@ -10,27 +12,26 @@
       </amp-position-observer>
 
       <amp-img id="parallaxImage"
-	width="800"
-	height="515"
+	:width="width"
+	:height="height"
 	layout="responsive"
-	src="liana-and-elenor.png"
-	alt="The Band Memebers">
+	:src="src"
+	:alt="alt">
       </amp-img>
 
       <div class="image-title-panel">
 	<div class="image-title-background">
-	  <span class="image-title-text">The Extra Ordinary Band Debut Tour</span>
+	  <span class="image-title-text">{{ title }}</span>
 	</div>
       </div>
 
     </div>
     
-    <!-- TODO: The following does not work - all the quotes of the script
-	 element are being turned into &quot; causing parse errors in the
-	 script -->
+    <!-- This is using v-html attribute to inject the inner HTML without escaping because
+         Vue turns double quotes into &quot; which is valid except in a <script> tag. -->
     <amp-animation id="parallaxTransition" layout="nodisplay">
-      <script type="application/json">
-        {
+      <script type="application/json" v-html='
+        JSON.stringify({
           "duration": "1",
           "fill": "both",
           "direction": "reverse",
@@ -40,18 +41,26 @@
               "transform": "translateY(-50%)"
             }]
           }]
-        }
-      </script>
+        })
+      '></script>
     </amp-animation>
+
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    width: Number,
+    height: Number,
+    src: String,
+    title: String,
+    alt: String
+  },
   head: {
     script: [
-      { async: 'async', 'custom-element': "amp-animation", src: "https://cdn.ampproject.org/v0/amp-animation-0.1.js" },
-      { async: 'async', 'custom-element': "amp-position-observer", src: "https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" },
+      { 'custom-element': "amp-animation", src: "https://cdn.ampproject.org/v0/amp-animation-0.1.js" async: true },
+      { 'custom-element': "amp-position-observer", src: "https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async: true },
     ]
   }
 }

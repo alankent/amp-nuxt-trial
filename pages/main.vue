@@ -73,7 +73,12 @@
     <TheHeader/>
 
     <!-- Parallax scrolled hero image -->
-    <HeroImage/>
+    <HeroImage
+	width="800"
+	height="515"
+	src="liana-and-elenor.png"
+	title="The Extra Ordinary Band Debut Tour"
+	alt="The Band Memebers"/>
 
     <main>
 
