@@ -7,16 +7,6 @@
         color: #888;
       }
 
-      .description-panel {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-      }
-
-      .tabs-panel {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-      }
-
       # Date Picker
 
       .CalendarMonth_caption {
@@ -74,22 +64,24 @@
 
     <!-- Parallax scrolled hero image -->
     <HeroImage
-	width="800"
-	height="515"
+	:width="800"
+	:height="515"
 	src="liana-and-elenor.png"
 	title="The Extra Ordinary Band Debut Tour"
 	alt="The Band Memebers"/>
 
     <main>
 
-      <div class="description-panel">
+      <DescriptionPanel>
         <p>The Extra Ordinary band is making is debut tour through many locations with its smash single.</p>
         <p>Don't be late! Concerts with a single song are pretty short!</p>
-      </div>
+      </DescriptionPanel>
 
-      <div class="tabs-panel">
-        <div class="tab">
+      <TabList>
+        <TabButton :selected="true" option="a">First Tab</TabButton>
+        <TabContent>
 
+<div>FIRST TAB CONTENTS</div>
           <p class="field-label">Event Date(s)</p>
 <!--
           <amp-date-picker
@@ -148,8 +140,9 @@
             <span [text]="total_price"></span>
           </div>
 
-        </div>
-        <div class="tab">
+        </TabContent>
+        <TabButton option="b">Second Tab</TabButton>
+        <TabContent>
 
           <div hidden> -- amp-access
             <input type="text" placeholder="Enter your comment"></input>
@@ -161,8 +154,10 @@
           </amp-live-list>
           -->
 
-        </div>
-      </div>
+<div>SECOND TAB CONTENTS</div>
+
+        </TabContent>
+      </TabList>
 
       <p>Some text</p>
       <p>Some text</p>
@@ -212,18 +207,25 @@
 import HeroImage from '~/components/HeroImage.vue'
 import TheHeader from '~/components/TheHeader.vue'
 import TheFooter from '~/components/TheFooter.vue'
+import DescriptionPanel from '~/components/DescriptionPanel.vue'
+import TabList from '~/components/TabList.vue'
+import TabButton from '~/components/TabButton.vue'
+import TabContent from '~/components/TabContent.vue'
 
 export default {
   components: {
     HeroImage,
     TheHeader,
     TheFooter,
+    DescriptionPanel,
+    TabList,
+    TabButton,
+    TabContent,
   },
 }
 </script>
 
 <style>
-
 body {
   font-family: Helvetica, sans-serif;
 }
@@ -237,5 +239,4 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-
 </style>
