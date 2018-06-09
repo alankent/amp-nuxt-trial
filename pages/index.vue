@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class='home-page'>
+
+    <SiteTitleBar/>
+
     <AppNavBar>
 
       <AppNavButton selected option="concerts">
@@ -36,19 +39,7 @@
 
     </AppNavBar>
 
-    <AppNavContent option="concerts">
-      Concerts
-    </AppNavContent>
-
-    <AppNavContent option="music">
-      Music by band
-    </AppNavContent>
-
-    <AppNavContent option="chat">
-      Chat
-    </AppNavContent>
-
-    <AppNavContent selected option="my-account">
+    <AppNavContent selected option="concerts">
 
       <HeroImage
         :width="800"
@@ -60,12 +51,39 @@
       <main>
 
         <DescriptionPanel>
-          <p>The Extra Ordinary band is making is debut tour through many locations with its smash single.</p>
-          <p>Don't be late! Concerts with a single song are pretty short!</p>
+          <p>The Extra Ordinary band is making is debut tour through many locations with its latest smash single.</p>
+          <p>Come and see this one hit wonder before they disappear for good!</p>
         </DescriptionPanel>
+
+        <!-- <FilterPanel/> -->
+
+        <!-- <ConcertList/> -->
 
       </main>
 
+    </AppNavContent>
+
+    <AppNavContent option="music">
+      <main>
+        <DescriptionPanel>
+          <p>The band is a one hit wonder, although some may argue with even that.</p>
+          <p>So don't be late! Concerts with a single song are pretty short!</p>
+        </DescriptionPanel>
+      </main>
+    </AppNavContent>
+
+    <AppNavContent option="chat">
+      <main>
+        <!-- <ChatList/> -->
+        Chat
+      </main>
+    </AppNavContent>
+
+    <AppNavContent option="my-account">
+      <main>
+        <!-- <MyAccount/> -->
+        My account.
+      </main>
     </AppNavContent>
 
   </div>
@@ -75,17 +93,19 @@
 
 <script>
 
-import HeroImage from '~/components/HeroImage.vue'
+import SiteTitleBar from '~/components/SiteTitleBar.vue'
 import AppNavBar from '~/components/AppNavBar.vue'
 import AppNavButton from '~/components/AppNavButton.vue'
 import AppNavContent from '~/components/AppNavContent.vue'
+import HeroImage from '~/components/HeroImage.vue'
 
 export default {
   components: {
-    HeroImage,
+    SiteTitleBar,
     AppNavBar,
     AppNavButton,
     AppNavContent,
+    HeroImage,
   },
 }
 
@@ -99,6 +119,10 @@ body {
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+.home-page {
+  z-index: 0;
 }
 
 main {

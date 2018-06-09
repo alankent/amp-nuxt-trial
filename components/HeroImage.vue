@@ -70,7 +70,6 @@ export default {
 .image-window {
   position: relative;
   overflow: hidden;
-  margin-top: 3rem;
 }
 
 .image-window amp-img {
