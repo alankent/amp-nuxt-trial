@@ -62,10 +62,11 @@ export default {
   top: 0;
   z-index: 1000;
   width: 100%;
-  height: 1rem;
+  height: 3rem;
   padding: 1rem;
   clear: both;
   background: white;
+  border-bottom: 1px solid #ccc;
 }
 
 .site-title-bar__spacer {
