@@ -27,7 +27,8 @@ export default {
 <style>
 
 .app-nav-button {
-  flex-grow: 1;
+  flex-basis: 100%;
+  align-items: stretch;
   list-style: none;
   text-align: center;
   cursor: pointer;
