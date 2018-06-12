@@ -4,9 +4,12 @@
   </div>
 </template>
 
-<style scoped>
+
+<style>
+
 .description-panel {
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+
 </style>

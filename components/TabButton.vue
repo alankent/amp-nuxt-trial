@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  params: {
+  props: {
     option: String,
     selected: Boolean,
   }

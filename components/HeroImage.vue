@@ -1,9 +1,11 @@
-<!-- Display a full width image with parallax scroll. -->
+<!--
+Display a full width image with parallax scroll.
+-->
 
 <template>
-  <div>
+  <div class="hero-image">
     <!-- Parallax scrolled hero image -->
-    <div class="image-window">
+    <div class="hero-image__window">
 
       <amp-position-observer
 	on="scroll:parallaxTransition.seekTo(percent=event.percent)"
@@ -19,9 +21,9 @@
 	:alt="alt">
       </amp-img>
 
-      <div class="image-title-panel">
-	<div class="image-title-background">
-	  <span class="image-title-text">{{ title }}</span>
+      <div class="hero-image__title-panel">
+	<div class="hero-image__title-background">
+	  <span class="hero-image__title-text">{{ title }}</span>
 	</div>
       </div>
 
@@ -48,7 +50,9 @@
   </div>
 </template>
 
+
 <script>
+
 export default {
   props: {
     width: Number,
@@ -64,19 +68,22 @@ export default {
     ]
   }
 }
+
 </script>
 
-<style scoped>
-.image-window {
+
+<style>
+
+.hero-image__window {
   position: relative;
   overflow: hidden;
 }
 
-.image-window amp-img {
+.hero-image__window amp-img {
   margin-bottom: -20%;
 }
 
-.image-title-panel {
+.hero-image__title-panel {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -84,13 +91,14 @@ export default {
   margin: 0;
 }
 
-.image-title-background {
+.hero-image__title-background {
   background-color: rgba(0,0,0,.2);
   padding: 10px;
 }
 
-.image-title-text {
+.hero-image__title-text {
   justify-content: center;
   color: white;
 }
+
 </style>

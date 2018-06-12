@@ -15,7 +15,7 @@ Exactly one button should be selected to have initial content displayed.
 <script>
 
 export default {
-  params: {
+  props: {
     option: String,
     selected: Boolean,
   }

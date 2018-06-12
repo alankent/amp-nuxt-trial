@@ -73,10 +73,12 @@
     </AppNavContent>
 
     <AppNavContent option="chat">
-      <main>
-        <!-- <ChatList/> -->
-        Chat
-      </main>
+      <!-- Chat is anchored at bottom of page above nav bar -->
+      <div class="app__chat">
+        <main>
+          <ChatContent/>
+        </main>
+      </div>
     </AppNavContent>
 
     <AppNavContent option="my-account">
@@ -98,6 +100,8 @@ import AppNavBar from '~/components/AppNavBar.vue'
 import AppNavButton from '~/components/AppNavButton.vue'
 import AppNavContent from '~/components/AppNavContent.vue'
 import HeroImage from '~/components/HeroImage.vue'
+import DescriptionPanel from '~/components/DescriptionPanel.vue'
+import ChatContent from '~/components/ChatContent.vue'
 
 export default {
   components: {
@@ -106,6 +110,8 @@ export default {
     AppNavButton,
     AppNavContent,
     HeroImage,
+    DescriptionPanel,
+    ChatContent,
   },
 }
 
@@ -128,6 +134,13 @@ body {
 main {
   max-width: 600px;
   margin: auto;
+}
+
+.app__chat {
+  position: fixed;
+  bottom: 90px;
+  width: 100%;
+  z-index: 0;
 }
 
 </style>
