@@ -15,8 +15,8 @@ At present this displays the logged in user's name, or a login link.
       </div>
       <div class="site-title-bar__hello" amp-access="access" amp-access-hide
         v-html=' `<template amp-access-template type="amp-mustache"><span>Hi {{ name }}</span></template>` '>
-        <!-- We cannot use "<template>" here because it gets processed by Vue, so we use
-             v-html to inject raw HTML. -->
+	<!-- We cannot use "<template>" here because it gets processed by Vue,
+	     so we use v-html to inject raw HTML. -->
       </div>
     </div>
     <div class="site-title-bar__spacer">

@@ -24,7 +24,7 @@ List of previous chat messages.
              :data-sort-time="msg.timestamp"
              :data-update-time="msg.timestamp">
            <!--<div> {{ index }} - {{ msg.timestamp }} - {{ msg.time }} - {{ msg.who }} - {{ msg.message }} </div>-->
-           <div class="chat-list__avatar">IMG: {{ msg.who }} </div>
+           <amp-img class="chat-list__avatar" :src="msg.who + '.png'" width="320" height="320" layout="responsive"></amp-img>
            <div class="chat-list__time">{{msg.time}}</div>
            <div class="chat-list__message">{{msg.message}}</div>
          </div>
@@ -61,27 +61,34 @@ function timestampToString(timestamp) {
 
 function synthensizeMessages() {
   let messages = [
-    { who: 'liana', message: '0 Hi everyone' },
-    { who: 'sam', message: '1 Hi dudes' },
-    { who: 'hank', message: '2 This is going to be so rad' },
-    { who: 'liana', message: '3 How uncouth!' },
-    { who: 'helen', message: '4 Think happy thoughts!' },
-    { who: 'liana', message: '5 Hi everyone' },
-    { who: 'sam', message: '6 Hi dudes' },
-    { who: 'hank', message: '7 This is going to be so rad' },
-    { who: 'liana', message: '8 How uncouth!' },
-    { who: 'helen', message: '9 Think happy thoughts!' },
-    { who: 'liana', message: '10 Hi everyone' },
-    { who: 'sam', message: '11 Hi dudes' },
-    { who: 'hank', message: '12 This is going to be so rad' },
-    { who: 'liana', message: '13 How uncouth!' },
-    { who: 'helen', message: '14 Think happy thoughts!' },
-    { who: 'liana', message: '15 Hi everyone' },
-    { who: 'sam', message: '16 Hi dudes' },
-    { who: 'hank', message: '17 This is going to be so rad' },
-    { who: 'liana', message: '18 How uncouth!' },
-    { who: 'helen', message: '19 Think happy thoughts!' },
+    { who: "elenor", message: "Wow, I would not miss this one for the world!" },
+    { who: "liana", message: "You better not miss it - you are playing!" },
+    { who: "elenor", message: "Playing is overrated - I plan to sit out for the next one" },
+    { who: "sam", message: "Woah! A place for all our fans!" },
+    { who: "liana", message: "Then why are there no messages except from us?" },
+    { who: "sam", message: "Well, I'm a fan of us!" },
+    { who: "hank", message: "Ugh, really Sam?" },
+    { who: "elenor", message: "Sam, I think you are kind of missing the point" },
+    { who: "sam", message: "But its super great that we have our own concert!" },
+    { who: "sam", message: "I'm mean who'd have thought? Right?" },
+    { who: "liana", message: "Yes, I must admit it is kinda cool" },
+    { who: "liana", message: "You are in, right Elenor?" },
+    { who: "hank", message: "Of course she is in - we need her on bass" },
+    { who: "liana", message: "Always charming Hank - you know how to make someone feel wanted" },
+    { who: "elenor", message: "What do you expect from a guy, right?" },
+    { who: "hank", message: "Hey! What did I do wrong this time?" },
+    { who: "sam", message: "It's cool hank" },
+    { who: "sam", message: "But I thought you said you did not play any instruments" },
+    { who: "hank", message: "I was just trying to get rid of a pest" },
+    { who: "sam", message: "A pest? You mean like an insect or something?" },
+    { who: "hank", message: "Or something. Definitely or something." },
+    { who: "liana", message: "Now Hank, be nice!" },
+    { who: "sam", message: "Am I missing something?" },
+    { who: "elenor", message: "Well, it wouldn't be the first time would it" },
   ];
+
+  // Number of messages to display.
+  const numDisplayed = 20;
 
   // Pretend a new message is being sent every 10 seconds (faster than page refresh rate).
   const interval = 10;
@@ -96,7 +103,7 @@ function synthensizeMessages() {
   // the past until now. Compute the message number from the timestamp so
   // the same time always returns the same message.
   let arr = [];
-  for (let i = 0; i < messages.length; i++) {
+  for (let i = 0; i < numDisplayed; i++) {
     let timestamp = roundedTime + i * interval;
     let m = messages[Math.floor(timestamp / interval) % messages.length];
     arr.push({ time: timestampToString(timestamp), timestamp: timestamp, who: m.who, message: m.message });

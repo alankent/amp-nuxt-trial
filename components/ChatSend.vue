@@ -3,18 +3,31 @@ Input text area to send a message.
 -->
 
 <template>
-  <form class="chat-send" method="post" action-xhr="..." target="_top">
-    <input class="chat-send__message" type="text" name="message" placeholder="share your excitement!" required>
-    <input class="chat-send__button" type="submit" value="Send">
-    <!-- Not implemented.
-    <div submit-success>
-      Sending message successful 
+  <div class="chat-send">
+
+    <div amp-access="access" amp-access-hide>
+      <form class="chat-send__form" method="post" action-xhr="..." target="_top">
+        <input class="chat-send__message" type="text" name="message" placeholder="share your excitement!" required>
+        <input class="chat-send__button" type="submit" value="Send">
+        <!-- Not implemented.
+        <div submit-success>
+          Sending message successful 
+        </div>
+        <div submit-error>
+          Sending message failed!
+        </div>
+        -->
+      </form>
     </div>
-    <div submit-error>
-      Sending message failed!
+
+    <div amp-access="NOT access" amp-access-hide>
+      <form class="chat-send__form" method="post" action-xhr="..." target="_top">
+        <input disabled class="chat-send__message" type="text" name="message" placeholder="login to join the conversation" required>
+        <input disabled class="chat-send__button" type="submit" value="Send">
+      </form>
     </div>
-    -->
-  </form>
+  </div>
+
 </template>
 
 
@@ -33,7 +46,7 @@ export default {
 
 <style>
 
-.chat-send {
+.chat-send__form {
   padding: 0;
   display: flex;
   border: 1px solid black;
@@ -51,6 +64,11 @@ export default {
   color: #fff;
   background: #12f;
   border: 1px solid black;
+}
+
+.chat-send__button[disabled] {
+  color: #888;
+  background: #444;
 }
 
 </style>
