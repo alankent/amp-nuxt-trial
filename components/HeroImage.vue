@@ -99,6 +99,8 @@ export default {
 .hero-image__title-text {
   justify-content: center;
   color: white;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 </style>

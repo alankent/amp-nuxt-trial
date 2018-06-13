@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "date": "Jan 3rd",
+      "venue": "The Local Pub",
+      "status": "Sold Out",
+      "available": false
+    },
+    {
+      "date": "Jan 3rd",
+      "venue": "The Local Pub or somewhere else nearby as the weather permits",
+      "status": "Available",
+      "available": true
+    }
+  ]
+}

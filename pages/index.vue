@@ -42,9 +42,9 @@
     <AppNavContent selected option="concerts">
 
       <HeroImage
-        :width="800"
-        :height="515"
-        src="liana-and-elenor.png"
+        :width="2"
+        :height="1"
+        src="band.png"
         title="The Extra Ordinary Band Debut Tour"
         alt="The Band Memebers"/>
 
@@ -55,15 +55,21 @@
           <p>Come and see this one hit wonder before they disappear for good!</p>
         </DescriptionPanel>
 
-        <!-- <FilterPanel/> -->
-
-        <!-- <ConcertList/> -->
+        <ConcertList/>
 
       </main>
 
     </AppNavContent>
 
     <AppNavContent option="music">
+      <!-- I thought the Nuxt docs said that it was okay to include the same script twice and the duplicate would be removed. It appears not to be the case at present, so including this causes AMP errors due to duplicate loading of the same components.
+      <HeroImage
+        :width="800"
+        :height="515"
+        src="liana-and-elenor.png"
+        title="The Extra Ordinary Band Debut Tour"
+        alt="The Band Memebers"/>
+      -->
       <main>
         <DescriptionPanel>
           <p>The band is a one hit wonder, although some may argue with even that.</p>
@@ -102,6 +108,7 @@ import AppNavContent from '~/components/AppNavContent.vue'
 import HeroImage from '~/components/HeroImage.vue'
 import DescriptionPanel from '~/components/DescriptionPanel.vue'
 import ChatContent from '~/components/ChatContent.vue'
+import ConcertList from '~/components/ConcertList.vue'
 
 export default {
   components: {
@@ -112,6 +119,7 @@ export default {
     HeroImage,
     DescriptionPanel,
     ChatContent,
+    ConcertList,
   },
 }
 

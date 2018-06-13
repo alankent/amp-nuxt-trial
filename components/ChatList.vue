@@ -25,8 +25,12 @@ List of previous chat messages.
              :data-update-time="msg.timestamp">
            <!--<div> {{ index }} - {{ msg.timestamp }} - {{ msg.time }} - {{ msg.who }} - {{ msg.message }} </div>-->
            <amp-img class="chat-list__avatar" :src="msg.who + '.png'" width="320" height="320" layout="responsive"></amp-img>
-           <div class="chat-list__time">{{msg.time}}</div>
-           <div class="chat-list__message">{{msg.message}}</div>
+           <div class="chat-list__content">
+             <span class="chat-list__name">@{{msg.who}}</span>
+             <span class="chat-list__time">{{msg.time}}</span>
+             <br />
+             <span class="chat-list__message">{{msg.message}}</span>
+           </div>
          </div>
        </div>
 
@@ -136,20 +140,30 @@ export default {
 }
 
 .chat-list__avatar {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+  min-width: 60px;
   background: #888;
 }
 
+.chat-list__content {
+  flex-grow: 1;
+  padding-left: .5em;
+}
+
+.chat-list__name {
+  font-size: 14px;
+  color: #888;
+}
+
 .chat-list__time {
-  padding: 1rem;
-  width: 5rem;
-  font-size: .8rem;
+  padding-left: 1em;
+  font-size: 12px;
+  color: #888;
 }
 
 .chat-list__message {
-  flex-grow: 1;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 /* Hide list during updates */
