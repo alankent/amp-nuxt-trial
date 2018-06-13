@@ -13,10 +13,12 @@ Display filter conditions and matching concerts.
       <amp-list width="auto" layout="fixed-height" height="100" src="/concerts.json" class="concert-list__items"
         v-html='`
           <template type="amp-mustache">
-            <div class="concert-list__item {{#available}}concert-list__item--available{{/available}}" >
-              <div class="concert-list__date">{{ date }}</div>
-              <div class="concert-list__venue">{{ venue }}</div>
-              <div class="concert-list__status">{{ status }}</div>
+            <div class="concert-list__row">
+              <div class="concert-list__item {{#available}}concert-list__item--available{{/available}}" >
+                <div class="concert-list__date">{{ date }}</div>
+                <div class="concert-list__venue">{{ venue }}</div>
+                <div class="concert-list__status">{{ status }}</div>
+              </div>
             </div>
           </template>
         `'>
@@ -61,27 +63,32 @@ export default {
 .concert-list__filter-panel {
   margin: auto;
   padding: 1rem;
+  padding-top: 0;
   border-collapse:separate;
   border-spacing:0 1rem;
 }
 
 .concert-list__matching-concerts {
-  border-top: 1px solid #ccc;
+  background: #eee;
+  outline: 1px solid #ccc;
   width: 100%;
+  padding: 0 5px;
+}
+
+.concert-list__row {
+  width: 100%;
+  margin: 5px 0;
 }
 
 .concert-list__item {
   display: flex;
   width: 100%;
   align-items: stretch;
-  background: #fff;
-  color: #888;
+  background: white;
+  color: #aaa;
   border: 1px solid #ccc;
+  border-radius: 6px;
   padding: 3px;
-}
-
-.concert-list__item:nth-child(odd) {
-  background: #eee;
 }
 
 .concert-list__item--available {
@@ -100,6 +107,11 @@ export default {
 .concert-list__status {
   flex: 0 0 7rem;
   text-align: center;
+  color: #f88;
+}
+
+.concert-list__item--available > .concert-list__status {
+  color: #030;
 }
 
 amp-lightbox {
