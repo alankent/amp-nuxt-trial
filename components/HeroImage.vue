@@ -8,37 +8,38 @@ Display a full width image with parallax scroll.
     <div class="hero-image__window">
 
       <amp-position-observer
-	on="scroll:parallaxTransition.seekTo(percent=event.percent)"
-	intersection-ratios="0"
-	layout="nodisplay">
+        :on="`scroll:parallaxTransition-${id}.seekTo(percent=event.percent)`"
+        intersection-ratios="0"
+	      layout="nodisplay">
       </amp-position-observer>
 
-      <amp-img id="parallaxImage"
-	:width="width"
-	:height="height"
-	layout="responsive"
-	:src="src"
-	:alt="alt">
+      <amp-img
+        :id="`parallaxImage-${id}`"
+        :width="width"
+        :height="height"
+        layout="responsive"
+        :src="src"
+        :alt="alt">
       </amp-img>
 
       <div class="hero-image__title-panel">
-	<div class="hero-image__title-background">
-	  <span class="hero-image__title-text">{{ title }}</span>
-	</div>
+        <div class="hero-image__title-background">
+          <span class="hero-image__title-text">{{ title }}</span>
+        </div>
       </div>
 
     </div>
     
     <!-- This is using v-html attribute to inject the inner HTML without escaping because
          Vue turns double quotes into &quot; which is valid except in a <script> tag. -->
-    <amp-animation id="parallaxTransition" layout="nodisplay">
+    <amp-animation :id="`parallaxTransition-${id}`" layout="nodisplay">
       <script type="application/json" v-html='
         JSON.stringify({
           "duration": "1",
           "fill": "both",
           "direction": "reverse",
           "animations": [{
-            "selector": "#parallaxImage",
+            "selector": `#parallaxImage-${id}`,
             "keyframes": [{
               "transform": "translateY(-50%)"
             }]
@@ -55,6 +56,7 @@ Display a full width image with parallax scroll.
 
 export default {
   props: {
+    id: String,
     width: Number,
     height: Number,
     src: String,

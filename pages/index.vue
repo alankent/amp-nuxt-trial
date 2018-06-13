@@ -42,6 +42,7 @@
     <AppNavContent selected option="concerts">
 
       <HeroImage
+        id="concerts"
         :width="2"
         :height="1"
         src="band.png"
@@ -62,14 +63,13 @@
     </AppNavContent>
 
     <AppNavContent option="music">
-      <!-- I thought the Nuxt docs said that it was okay to include the same script twice and the duplicate would be removed. It appears not to be the case at present, so including this causes AMP errors due to duplicate loading of the same components.
       <HeroImage
+        id="music"
         :width="800"
         :height="515"
         src="liana-and-elenor.png"
         title="The Extra Ordinary Band Debut Tour"
         alt="The Band Memebers"/>
-      -->
       <main>
         <DescriptionPanel>
           <p>The band is a one hit wonder, although some may argue with even that.</p>
