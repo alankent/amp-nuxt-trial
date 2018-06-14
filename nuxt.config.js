@@ -27,27 +27,20 @@ module.exports = {
   // We want server side rendering.
   mode: 'universal',
 
-  /*
-  ** Headers of the page
-  */
+  // Headers of the page
   head: {
     title: pkg.name,
     meta: [
-      //AJK: Moved to app.html { charset: 'utf-8' },
-      //AJK: Moved to app.html { name: 'viewport', content: 'width=device-width,minimum-scale=1' },
-      //AJK: { hid: 'description', name: 'description', content: pkg.description }
+      // See app.html for the AMP meta tags.
     ],
     link: [
-      //AJK: { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      // TODO: { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       // TODO: Canonical URL should be "self", whatever the current URL is (not always the root)
       { rel: 'canonical', href: '/' }, // Wrong!
-      //AJK: { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' }
     ]
   },
 
-  /*
-  ** Disable loading bar since AMP will not generate a dynamic page.
-  */
+  // Disable loading bar since AMP will not generate a dynamic page.
   loading: false,
 
   render: {
@@ -59,33 +52,24 @@ module.exports = {
   css: [
   ],
 
-  /*
-  ** Plugins to load before mounting the App
-  */
+  // Plugins to load before mounting the App
   plugins: [
   ],
 
-  /*
-  ** Nuxt.js modules
-  */
+  // Nuxt.js modules
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios'
   ],
-  /*
-  ** Axios module configuration
-  */
+
+  // Axios module configuration
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  /*
-  ** Build configuration
-  */
+  // Build configuration
   build: {
-    /*
-    ** You can extend webpack config here
-    */
+    // You can extend webpack config here
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -108,5 +92,10 @@ module.exports = {
     'render:route': (url, page, { req, res }) => {
       page.html = modifyHtml(page.html)
     }
-  }
+  },
+
+  serverMiddleware: [
+    // Return concerts, filtered by query params.
+    '~/api/concerts.js'
+  ]
 }

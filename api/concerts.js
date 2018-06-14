@@ -1,5 +1,10 @@
-{
-  "items": [
+const app = require('express')()
+
+module.exports = { path: '/api', handler: app }
+
+app.get('/concerts', (req, res) => {
+
+  let data = [
     {
       "date": "Jan 3rd",
       "venue": "The Local Pub",
@@ -48,5 +53,7 @@
       "status": "Sold Out",
       "available": false
     }
-  ]
-}
+  ];
+
+  res.json({items: data, query: req.query});
+});

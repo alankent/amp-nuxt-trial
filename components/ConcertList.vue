@@ -11,8 +11,8 @@ Display filter conditions and matching concerts.
     </table>
     <div class="concert-list__matching-concerts">
       <amp-list class="concert-list__items" width="auto" layout="fixed-height" height="100"
-        src="/concerts.json"
-        [src]="'/concerts.json?startDate=' + startDate + '&endDate=' + endDate + '&venue=' + venue"
+        src="/api/concerts"
+        [src]="'/api/concerts?startDate=' + startDate + '&endDate=' + endDate + '&venue=' + venue"
         v-html='`
           <template type="amp-mustache">
             <div class="concert-list__row">
