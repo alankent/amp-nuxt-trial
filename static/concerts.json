@@ -23,6 +23,30 @@
       "venue": "Back Lane",
       "status": "Sold Out",
       "available": false
+    },
+    {
+      "date": "Jan 3rd",
+      "venue": "The Local Pub",
+      "status": "Sold Out",
+      "available": false
+    },
+    {
+      "date": "Jan 4th",
+      "venue": "The Local Pub or somewhere else nearby as the weather permits",
+      "status": "Available",
+      "available": true
+    },
+    {
+      "date": "Jan 5th",
+      "venue": "The Other Pub",
+      "status": "Available",
+      "available": true
+    },
+    {
+      "date": "Jan 6th",
+      "venue": "Back Lane",
+      "status": "Sold Out",
+      "available": false
     }
   ]
 }

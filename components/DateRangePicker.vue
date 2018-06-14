@@ -9,7 +9,7 @@ Accept a date range from the user.
         <input class="date-range-picker__input"
           id="lb-start"
           placeholder="Start date"
-          on="tap:lb.open"
+          on="tap:lb.open;change:AMP.setState({startDate: event.value})"
           role="textbox"
           tabindex="0">
       </div>
@@ -17,12 +17,12 @@ Accept a date range from the user.
         <input class="date-range-picker__input"
           id="lb-end"
           placeholder="End date"
-          on="tap:lb.open"
+          on="tap:lb.open;change:AMP.setState({endDate: event.value})"
           role="textbox"
           tabindex="0">
       </div>
       <button class="date-range-picker__clear-button"
-        on="tap:lb-picker.clear">Clear</button>
+        on="tap:lb-picker.clear,AMP.setState({startDate:'', endDate:''})">Clear</button>
     </div>
     <amp-lightbox id="lb"
       layout="nodisplay">
@@ -38,7 +38,8 @@ Accept a date range from the user.
           number-of-months="12"
           format="YYYY-MM-DD"
           on="activate: lb.open;
-              deactivate: lb.close;"
+              deactivate: lb.close;
+              select:AMP.setState({startDate: event.start.date, endDate: event.end.date});"
           start-input-selector="#lb-start"
           end-input-selector="#lb-end"
           :min="(new Date()).toISOString().split('T')[0]"></amp-date-picker>

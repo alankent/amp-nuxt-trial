@@ -135,6 +135,11 @@ body {
   padding: 0;
 }
 
+p + p {
+  margin-top: .5rem;
+}
+  
+
 .home-page {
   z-index: 0;
 }

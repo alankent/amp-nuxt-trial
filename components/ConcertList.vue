@@ -10,7 +10,9 @@ Display filter conditions and matching concerts.
       <tr><td>Venue:</td><td><VenuePicker/></td></tr>
     </table>
     <div class="concert-list__matching-concerts">
-      <amp-list width="auto" layout="fixed-height" height="100" src="/concerts.json" class="concert-list__items"
+      <amp-list class="concert-list__items" width="auto" layout="fixed-height" height="100"
+        src="/concerts.json"
+        [src]="'/concerts.json?startDate=' + startDate + '&endDate=' + endDate + '&venue=' + venue"
         v-html='`
           <template type="amp-mustache">
             <div class="concert-list__row">
@@ -73,6 +75,7 @@ export default {
   outline: 1px solid #ccc;
   width: 100%;
   padding: 0 5px;
+  margin-bottom: 5rem;
 }
 
 .concert-list__row {
