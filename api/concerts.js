@@ -2,58 +2,83 @@ const app = require('express')()
 
 module.exports = { path: '/api', handler: app }
 
+
+/*
+Synthensize a list of concert dates.
+Generates one month of concerts in the future, then filters it based on search criteria.
+*/
 app.get('/concerts', (req, res) => {
 
   let data = [
     {
-      "date": "Jan 3rd",
+      "day": 0,
       "venue": "The Local Pub",
-      "status": "Sold Out",
       "available": false
     },
     {
-      "date": "Jan 4th",
+      "day": 1,
       "venue": "The Local Pub or somewhere else nearby as the weather permits",
-      "status": "Available",
       "available": true
     },
     {
-      "date": "Jan 5th",
+      "day": 1,
       "venue": "The Other Pub",
-      "status": "Available",
       "available": true
     },
     {
-      "date": "Jan 6th",
+      "day": 2,
       "venue": "Back Lane",
-      "status": "Sold Out",
       "available": false
     },
     {
-      "date": "Jan 3rd",
+      "day": 2,
       "venue": "The Local Pub",
-      "status": "Sold Out",
       "available": false
     },
     {
-      "date": "Jan 4th",
+      "day": 2,
       "venue": "The Local Pub or somewhere else nearby as the weather permits",
-      "status": "Available",
       "available": true
     },
     {
-      "date": "Jan 5th",
+      "day": 4,
       "venue": "The Other Pub",
-      "status": "Available",
       "available": true
     },
     {
-      "date": "Jan 6th",
+      "day": 5,
       "venue": "Back Lane",
-      "status": "Sold Out",
       "available": false
     }
   ];
+
+  const now = new Date();
+
+  // Synthesize the data.
+  data = data.map(({day, venue, available}) => {
+
+    let d = new Date(now);
+    d.setDate(d.getDate() + day);
+    let date = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] + ' ' + d.getDate();
+
+    let dateStamp = d.toISOString().split('T')[0];
+
+    let status = available ? "Available" : "Sold Out";
+
+    return { dateStamp, date, venue, status, available };
+  });
+
+  if (req.query.startDate && req.query.startDate != "null") {
+    data = data.filter((concert) => (concert.dateStamp >= req.query.startDate));
+  }
+
+  if (req.query.endDate && req.query.endDate != "null") {
+    data = data.filter((concert) => (concert.dateStamp <= req.query.endDate));
+  }
+
+  if (req.query.venue && req.query.venue != "null") {
+    data = data.filter((concert) => (concert.venue.includes(req.query.venue)));
+  }
 
   res.json({items: data, query: req.query});
 });
