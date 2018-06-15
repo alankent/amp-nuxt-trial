@@ -131,6 +131,11 @@ export default {
 
 <style>
 
+.chat-list {
+  max-width: 600px;
+  margin: auto;
+}
+
 .chat-list__item {
   border: 1px solid #444;
   padding: 5px;

@@ -12,7 +12,7 @@ Display filter conditions and matching concerts.
     <div class="concert-list__matching-concerts">
       <amp-list class="concert-list__items" width="auto" layout="fixed-height" height="100"
         src="/api/concerts"
-        [src]="'/api/concerts?startDate=' + startDate + '&endDate=' + endDate + '&venue=' + venue"
+        [src]="'/api/concerts?startDate=' + (startDate || '') + '&endDate=' + (endDate || '') + '&venue=' + (venue || '')"
         v-html='`
           <template type="amp-mustache">
             <div class="concert-list__row">
@@ -53,6 +53,16 @@ export default {
 
 <style>
 
+.concert-list {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 6rem;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+}
+
 .concert-list__title {
   font-size: 32pt;
   font-weight: bold;
@@ -71,11 +81,8 @@ export default {
 }
 
 .concert-list__matching-concerts {
-  background: #eee;
-  outline: 1px solid #ccc;
   width: 100%;
   padding: 0 5px;
-  margin-bottom: 5rem;
 }
 
 .concert-list__row {
@@ -91,7 +98,7 @@ export default {
   color: #aaa;
   border: 1px solid #ccc;
   border-radius: 6px;
-  padding: 3px;
+  padding: 8px;
 }
 
 .concert-list__item--available {

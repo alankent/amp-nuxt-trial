@@ -10,6 +10,7 @@
 .description-panel {
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 
 </style>

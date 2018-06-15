@@ -95,7 +95,12 @@ module.exports = {
   },
 
   serverMiddleware: [
+
     // Return concerts, filtered by query params.
-    '~/api/concerts.js'
+    '~/api/concerts.js',
+
+    // Return venues
+    '~/api/venues.js'
+    
   ]
 }

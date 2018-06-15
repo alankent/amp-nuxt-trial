@@ -46,6 +46,11 @@ export default {
 
 <style>
 
+.chat-send {
+  max-width: 600px;
+  margin: auto;
+}
+
 .chat-send__form {
   padding: 0;
   display: flex;

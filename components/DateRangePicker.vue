@@ -87,13 +87,18 @@ export default {
   min-width: 50px;
   font-size: 1rem;
   line-height: 1.5rem;
-  border-bottom: 1px solid black;
+  /*border-bottom: 1px solid black;*/
   margin-right: 1rem;
 }
 
 .date-range-picker__input {
-  border: none;
-  padding: 0;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .date-range-picker__clear-button {
@@ -103,9 +108,13 @@ export default {
   font-weight: bold;
   border: 1px solid #12f;
   line-height: 1rem;
-  padding: .5em;
   text-decoration: none;
   vertical-align: middle;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .date-range-picker__close-button {
