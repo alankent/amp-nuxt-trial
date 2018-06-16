@@ -13,11 +13,9 @@ Input text area with smart autocomplete on venue name.
   <div class="venue-picker">
     <div class="venue-picker__venue-search">
       <div class="venue-picker__search-container">
-        <!--
         <input name="venue-picker__dropdown"
             type="hidden"
             [value]="venue">
-            -->
         <input class="venue-picker__input"
             id="venue-picker__query"
             name="query"
@@ -25,13 +23,13 @@ Input text area with smart autocomplete on venue name.
             placeholder="Select a venue"
             type="text"
             on="input-debounced:AMP.setState({ venue: event.value, autosuggest: event.value, comboExpanded: true}), venue-picker__autosuggest-list.show"
-            [value]="inputText || ''"
+            [value]="venue || ''"
             value="">
-        <button on="tap:venue-picker__autosuggest-list.toggleVisibility, AMP.setState({ comboExpanded: !comboExpanded })"
-            class="venue-picker__dropdown-toggle"
+        <button class="venue-picker__dropdown-toggle"
+            on="tap:venue-picker__autosuggest-list.toggleVisibility, AMP.setState({ comboExpanded: !comboExpanded, autosuggest: '' })"
             type="button">
-          <i [class]="comboExpanded ? 'venue-picker__arrow-up' : 'venue-picker__arrow-down'"
-              class="venue-picker__arrow-down"></i>
+          <span [class]="comboExpanded ? 'venue-picker__arrow-up' : 'venue-picker__arrow-down'"
+              class="venue-picker__arrow-down"></span>
         </button>
       </div>
       <amp-list class="venue-picker__autosuggest-list"
@@ -39,7 +37,7 @@ Input text area with smart autocomplete on venue name.
           items="."
           layout="fixed-height"
           height="350"
-          src="/api/venues"
+          [src]="'/api/venues?venue=' + autosuggest"
           id="venue-picker__autosuggest-list"
           hidden
           v-html='`
@@ -47,20 +45,19 @@ Input text area with smart autocomplete on venue name.
           <amp-selector class="venue-picker__dropdown-selector"
               keyboard-select-mode="focus"
               layout="container"
-              on="select:AMP.setState({ venue: event.targetOption }),
+              on="select:AMP.setState({ venue: event.targetOption, comboExpanded: false }),
                          venue-picker__autosuggest-list.hide">
             {{#items}}
             <div class="venue-picker__select-option"
                 role="option"
                 tabindex="0"
                 on="tap:venue-picker__autosuggest-list.hide"
-                option="{{name}}">{{name}}</div>
+                option="{{venue}}">{{venue}}</div>
             {{/items}}
           </amp-selector>
         </template>
         `'>
       </amp-list>
-
     </div>
   </div>
 </template>
@@ -85,10 +82,14 @@ export default {
 }
 
 .venue-picker__venue-search {
+  width: 100%;
+  max-width: 350px;
+  position: relative;
 }
 
 .venue-picker__search-container {
   display: flex;
+  position: relative;
   align-items: center;
   flex-direction: center;
   justify-content: space-between;
@@ -97,7 +98,6 @@ export default {
   min-width: 50px;
   font-size: 1rem;
   line-height: 1.5rem;
-  /*border-bottom: 1px solid black;*/
   margin-right: 1rem;
 }
 
@@ -114,32 +114,43 @@ export default {
 .venue-picker__dropdown-toggle {
   height: 2.2rem;
   width: 2.2rem;
+  display: block;
 }
 
 .venue-picker__arrow-up {
-  height: 100%;
-  box-sizing: border-box;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Q…YgNnoiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+);
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik03LjQxIDE1LjQxTDEyIDEwLjgzbDQuNTkgNC41OEwxOCAxNGwtNi02LTYgNnoiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
 }
 
 .venue-picker__arrow-down {
-  height: 100%;
-  box-sizing: border-box;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Q…Z6Ii8+CiAgICA8cGF0aCBkPSJNMC0uNzVoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+);
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik03LjQxIDcuODRMMTIgMTIuNDJsNC41OS00LjU4TDE4IDkuMjVsLTYgNi02LTZ6Ii8+CiAgICA8cGF0aCBkPSJNMC0uNzVoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
+}
+
+.venue-picker__autosuggest-container {
+  position: relative;
+  display: inline-block;
 }
 
 .venue-picker__autosuggest-list {
-  position: relative;
-  display: block;
+  box-shadow: 0px 2px 6px rgba(0,0,0,.3);
+  width: 100%;
   background: white;
-  overflow: hidden;
 }
 
 .venue-picker__dropdown-selector {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
 }
+
+.venue-picker__select-option {
+  padding: 1em;
+}
+
+.venue-picker__select-option:nth-child(odd) {
+  background: #eee;
+}
+
 </style>

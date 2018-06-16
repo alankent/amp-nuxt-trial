@@ -102,7 +102,6 @@ export default {
 }
 
 .date-range-picker__clear-button {
-  /*ampstart-btn caps*/
   background: #12f;
   color: white;
   font-weight: bold;

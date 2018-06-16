@@ -4,7 +4,9 @@ Appears under <AppNavBar> after a <AppNavButton>.
 -->
 
 <template>
-  <div role="tabpanel" class="app-nav-content" :hidden="!selected" :[hidden]="`appNav.option != '${option}'`">
+  <div role="tabpanel" class="app-nav-content" 
+      :hidden="!selected"
+      :[hidden]="`!(appNav.option == '${option}' || (${selected} && appNav.option == ''))`">
     <slot></slot>
   </div>
 </template>

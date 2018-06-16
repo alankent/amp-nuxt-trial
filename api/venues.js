@@ -25,7 +25,7 @@ app.get('/venues', (req, res) => {
   ];
 
   if (req.query.venue && req.query.venue != "null") {
-    data = data.filter((concert) => (concert.venue.includes(req.query.venue)));
+    data = data.filter((concert) => (concert.venue.toLowerCase().includes(req.query.venue.toLowerCase())));
   }
 
   res.json({items: data, query: req.query});
