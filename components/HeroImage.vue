@@ -30,22 +30,20 @@ Display a full width image with parallax scroll.
 
     </div>
     
-    <!-- This is using v-html attribute to inject the inner HTML without escaping because
-         Vue turns double quotes into &quot; which is valid except in a <script> tag. -->
-    <amp-animation :id="`parallaxTransition-${id}`" layout="nodisplay">
-      <script type="application/json" v-html='
-        JSON.stringify({
+    <amp-animation :id="'parallaxTransition-'+id" layout="nodisplay">
+      <UnescapedScript type="application/json">
+        {
           "duration": "1",
           "fill": "both",
           "direction": "reverse",
           "animations": [{
-            "selector": `#parallaxImage-${id}`,
+            "selector": "#parallaxImage-{{id}}",
             "keyframes": [{
               "transform": "translateY(-50%)"
             }]
           }]
-        })
-      '></script>
+        }
+      </UnescapedScript>
     </amp-animation>
 
   </div>
@@ -54,7 +52,12 @@ Display a full width image with parallax scroll.
 
 <script>
 
+import UnescapedScript from '~/components/UnescapedScript.js'
+
 export default {
+  components: {
+    UnescapedScript
+  },
   props: {
     id: String,
     width: Number,

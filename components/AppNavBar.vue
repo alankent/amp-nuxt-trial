@@ -7,7 +7,9 @@ children representing the different buttons in the navigation bar.
 <template>
   <div class="app-nav-bar">
     <amp-state id="appNav">
-      <script type="application/json" v-html=' JSON.stringify({ "option": "" }) '></script>
+      <UnescapedScript type="application/json">
+        { "option": "" }
+      </UnescapedScript>
     </amp-state>
     <amp-selector role="tablist" layout="container" class="app-nav-bar__selector" on="select:AMP.setState({appNav: {option: event.targetOption}})">
       <slot></slot>
@@ -18,7 +20,12 @@ children representing the different buttons in the navigation bar.
 
 <script>
 
+import UnescapedScript from '~/components/UnescapedScript.js'
+
 export default {
+  components: {
+    UnescapedScript
+  },
   head: {
     script: [
       { hid: "amp-selector", 'custom-element': "amp-selector", src: "https://cdn.ampproject.org/v0/amp-selector-0.1.js", async: '' },
