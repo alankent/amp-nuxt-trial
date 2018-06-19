@@ -9,7 +9,7 @@
 export default {
   head: {
     script: [
-      { 'custom-element': "amp-selector", src: "https://cdn.ampproject.org/v0/amp-selector-0.1.js", async: true },
+      { hid: "amp-selector", 'custom-element': "amp-selector", src: "https://cdn.ampproject.org/v0/amp-selector-0.1.js", async: '' },
     ]
   }
 }

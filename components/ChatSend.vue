@@ -36,7 +36,7 @@ Input text area to send a message.
 export default {
   head: {
     script: [
-      { 'custom-element': "amp-form", src: "https://cdn.ampproject.org/v0/amp-form-0.1.js", async: true },
+      { hid: 'amp-form', 'custom-element': "amp-form", src: "https://cdn.ampproject.org/v0/amp-form-0.1.js", async: '' },
     ]
   }
 }

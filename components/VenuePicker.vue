@@ -36,7 +36,7 @@ Input text area with smart autocomplete on venue name.
           single-item
           items="."
           layout="fixed-height"
-          height="350"
+          height="300"
           [src]="'/api/venues?venue=' + autosuggest"
           id="venue-picker__autosuggest-list"
           hidden
@@ -68,7 +68,7 @@ Input text area with smart autocomplete on venue name.
 export default {
   head: {
     script: [
-      { 'custom-element': "amp-form", src: "https://cdn.ampproject.org/v0/amp-form-0.1.js", async: true },
+      { hid: "amp-form", 'custom-element': "amp-form", src: "https://cdn.ampproject.org/v0/amp-form-0.1.js", async: '' },
     ]
   }
 }
@@ -137,6 +137,8 @@ export default {
 }
 
 .venue-picker__autosuggest-list {
+  position: absolute;
+  z-index: 2000;
   box-shadow: 0px 2px 6px rgba(0,0,0,.3);
   width: 100%;
   background: white;

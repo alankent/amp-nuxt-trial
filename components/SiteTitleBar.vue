@@ -30,9 +30,9 @@ At present this displays the logged in user's name, or a login link.
 export default {
   head: {
     script: [
-      { 'custom-element': "amp-access", src: "https://cdn.ampproject.org/v0/amp-access-0.1.js", async: true },
-      { 'custom-element': "amp-analytics", src: "https://cdn.ampproject.org/v0/amp-analytics-0.1.js", async: true },
-      { 'custom-template': "amp-mustache", src: "https://cdn.ampproject.org/v0/amp-mustache-0.1.js", async: true },
+      { hid: "amp-access", 'custom-element': "amp-access", src: "https://cdn.ampproject.org/v0/amp-access-0.1.js", async: '' },
+      { hid: "amp-analytics", 'custom-element': "amp-analytics", src: "https://cdn.ampproject.org/v0/amp-analytics-0.1.js", async: '' },
+      { hid: "amp-mustache", 'custom-template': "amp-mustache", src: "https://cdn.ampproject.org/v0/amp-mustache-0.1.js", async: '' },
       { 'id': "amp-access", type: "application/json", innerHTML: `
         {
           "authorization": "https://ampbyexample.com/components/amp-access/authorization?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM",

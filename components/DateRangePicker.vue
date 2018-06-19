@@ -54,9 +54,9 @@ Accept a date range from the user.
 export default {
   head: {
     script: [
-      { 'custom-element': "amp-date-picker", src: "https://cdn.ampproject.org/v0/amp-date-picker-0.1.js", async: true },
-      { 'custom-element': "amp-lightbox", src: "https://cdn.ampproject.org/v0/amp-lightbox-0.1.js", async: true },
-      { 'custom-element': "amp-form", src: "https://cdn.ampproject.org/v0/amp-form-0.1.js", async: true },
+      { hid: "amp-date-picker", 'custom-element': "amp-date-picker", src: "https://cdn.ampproject.org/v0/amp-date-picker-0.1.js", async: '' },
+      { hid: "amp-lightbox", 'custom-element': "amp-lightbox", src: "https://cdn.ampproject.org/v0/amp-lightbox-0.1.js", async: '' },
+      { hid: "amp-form", 'custom-element': "amp-form", src: "https://cdn.ampproject.org/v0/amp-form-0.1.js", async: '' },
     ],
     meta: [
       { 'name': "amp-experiments-opt-in", content: "amp-date-picker" },
@@ -73,7 +73,6 @@ export default {
 }
 
 .date-range-picker__input-panel {
-  /* align-content-center space-between */
   display: flex;
   align-items: center;
   flex-direction: center;
@@ -81,13 +80,11 @@ export default {
 }
 
 .date-range-picker__input-container {
-  /*ampstart-input*/
   max-width: 100%;
   width: 100px;
   min-width: 50px;
   font-size: 1rem;
   line-height: 1.5rem;
-  /*border-bottom: 1px solid black;*/
   margin-right: 1rem;
 }
 
@@ -117,7 +114,6 @@ export default {
 }
 
 .date-range-picker__close-button {
-/*ampstart-btn absolute m1 caps small-button*/
   margin: 1em;
   position: absolute;
   font-size: .75em;

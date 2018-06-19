@@ -34,16 +34,18 @@ Display filter conditions and matching concerts.
 
 import DateRangePicker from '~/components/DateRangePicker.vue'
 import VenuePicker from '~/components/VenuePicker.vue'
+import AmpTemplate from '~/components/AmpTemplate.js'
 
 export default {
   components: {
     DateRangePicker,
     VenuePicker,
+    AmpTemplate,
   },
   head: {
     script: [
-      { 'custom-element': "amp-list", src: "https://cdn.ampproject.org/v0/amp-list-0.1.js", async: true },
-      { 'custom-template': "amp-mustache", src: "https://cdn.ampproject.org/v0/amp-mustache-0.1.js", async: true },
+      { hid: "amp-list", 'custom-element': "amp-list", src: "https://cdn.ampproject.org/v0/amp-list-0.1.js", async: '' },
+      { hid: "amp-mustache", 'custom-template': "amp-mustache", src: "https://cdn.ampproject.org/v0/amp-mustache-0.1.js", async: '' },
     ]
   }
 }
