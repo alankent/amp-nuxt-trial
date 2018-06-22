@@ -66,11 +66,16 @@ export default {
     title: String,
     alt: String
   },
-  head: {
-    script: [
-      { hid: "amp-animation", 'custom-element': "amp-animation", src: "https://cdn.ampproject.org/v0/amp-animation-0.1.js", async: '' },
-      { hid: "amp-position-observer", 'custom-element': "amp-position-observer", src: "https://cdn.ampproject.org/v0/amp-position-observer-0.1.js", async: '' },
-    ]
+  head () {
+    return {
+      script: [
+        { hid: "amp-animation", 'custom-element': "amp-animation", src: "https://cdn.ampproject.org/v0/amp-animation-0.1.js", async: '' },
+        { hid: "amp-position-observer", 'custom-element': "amp-position-observer", src: "https://cdn.ampproject.org/v0/amp-position-observer-0.1.js", async: '' },
+      ],
+      link: [
+        { rel: "preload", href: this.src, as: "image" },
+      ]
+    }
   }
 }
 
