@@ -115,6 +115,7 @@ export default {
   height: 2.2rem;
   width: 2.2rem;
   display: block;
+  border: 1px solid #ccc;
 }
 
 .venue-picker__arrow-up {

@@ -3,9 +3,9 @@
 
     <SiteTitleBar/>
 
-    <AppNavBar :spa="true">
+    <AppNavBar :spa="false">
 
-      <AppNavButton selected option="concerts">
+      <AppNavButton src="/concerts" :selected="currentPage == 'concerts'" option="concerts">
         <!-- "calendar" from https://materialdesignicons.com/ -->
         <svg class="svg-icon-size" viewBox="0 0 24 24">
           <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
@@ -13,7 +13,7 @@
         <div>Concerts</div>
       </AppNavButton>
 
-      <AppNavButton option="music">
+      <AppNavButton src="/music" :selected="currentPage == 'music'" option="music">
         <!-- "music" from https://materialdesignicons.com/ -->
         <svg class="svg-icon-size" viewBox="0 0 24 24">
           <path d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z" />
@@ -21,7 +21,7 @@
         <div>Music</div>
       </AppNavButton>
 
-      <AppNavButton option="chat">
+      <AppNavButton src="/chat" :selected="currentPage == 'chat'" option="chat">
         <!-- "message-text" from https://materialdesignicons.com/ -->
         <svg class="svg-icon-size" viewBox="0 0 24 24">
           <path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18" />
@@ -29,7 +29,7 @@
         <div>Chat</div>
       </AppNavButton>
 
-      <AppNavButton option="my-account">
+      <AppNavButton src="/my-account" :selected="currentPage == 'my-account'" option="my-account">
         <!-- "account" from https://materialdesignicons.com/ -->
         <svg class="svg-icon-size" viewBox="0 0 24 24">
           <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
@@ -39,60 +39,7 @@
 
     </AppNavBar>
 
-    <AppNavContent selected option="concerts">
-
-      <HeroImage
-        id="concerts"
-        :width="2"
-        :height="1"
-        src="band.png"
-        title="The Extra Ordinary Band Debut Tour"
-        alt="The Band Memebers"/>
-
-      <main>
-
-        <DescriptionPanel>
-          <p>The Extra Ordinary band is making is debut tour through many locations with its latest smash single.</p>
-          <p>Come and see this one hit wonder before they disappear for good!</p>
-        </DescriptionPanel>
-
-        <ConcertList/>
-
-      </main>
-
-    </AppNavContent>
-
-    <AppNavContent option="music">
-      <HeroImage
-        id="music"
-        :width="800"
-        :height="515"
-        src="liana-and-elenor.png"
-        title="The Extra Ordinary Band Debut Tour"
-        alt="The Band Memebers"/>
-      <main>
-        <DescriptionPanel>
-          <p>The band is a one hit wonder, although some may argue with even that.</p>
-          <p>So don't be late! Concerts with a single song are pretty short!</p>
-        </DescriptionPanel>
-      </main>
-    </AppNavContent>
-
-    <AppNavContent option="chat">
-      <!-- Chat is anchored at bottom of page above nav bar -->
-      <div class="app__anchor-to-bottom">
-        <main>
-          <ChatContent/>
-        </main>
-      </div>
-    </AppNavContent>
-
-    <AppNavContent option="my-account">
-      <main>
-        <!-- <MyAccount/> -->
-        My account.
-      </main>
-    </AppNavContent>
+    <slot/>
 
   </div>
 
@@ -121,6 +68,9 @@ export default {
     ChatContent,
     ConcertList,
   },
+  props: {
+    currentPage: String,
+  }
 }
 
 </script>
@@ -153,7 +103,7 @@ main {
   margin: auto;
 }
 
-.app__anchor-to-bottom {
+.app__anchor_to_bottom {
   position: fixed;
   bottom: 90px;
   width: 100%;

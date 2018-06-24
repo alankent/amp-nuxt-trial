@@ -8,7 +8,7 @@ var getChildrenTextContent = function (children) {
   }).join('')
 }
 
-/* Using this component avoids the problem of Nuxt swallowing nested <template> elements. */
+/* Using this component avoids the problem of Nuxt escaping quotes in JSON in a <script> tag. */
 export default Vue.component('unescaped-script', {
   render: function (createElement) {
     return createElement(

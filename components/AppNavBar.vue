@@ -5,15 +5,18 @@ children representing the different buttons in the navigation bar.
 -->
 
 <template>
-  <div class="app-nav-bar">
+  <div v-if="spa" class="app-nav-bar">
     <amp-state id="appNav">
       <UnescapedScript type="application/json">
         { "option": "" }
       </UnescapedScript>
     </amp-state>
-    <amp-selector role="tablist" layout="container" class="app-nav-bar__selector" on="select:AMP.setState({appNav: {option: event.targetOption}})">
+    <amp-selector role="tablist" layout="container" class="app-nav-bar__container" on="select:AMP.setState({appNav: {option: event.targetOption}})">
       <slot></slot>
     </amp-selector>
+  </div>
+  <div v-else class="app-nav-bar app-nav-bar__container">
+    <slot></slot>
   </div>
 </template>
 
@@ -25,6 +28,9 @@ import UnescapedScript from '~/components/UnescapedScript.js'
 export default {
   components: {
     UnescapedScript
+  },
+  props: {
+    spa: Boolean,
   },
   head: {
     script: [
@@ -39,7 +45,7 @@ export default {
 
 <style>
 
-.app-nav-bar__selector {
+.app-nav-bar__container {
   display: flex;
   overflow: hidden;
   position: fixed;

@@ -1,6 +1,5 @@
 <!--
 Content to be displayed when a nav button is selected.
-Appears under <AppNavBar> after a <AppNavButton>.
 -->
 
 <template>
