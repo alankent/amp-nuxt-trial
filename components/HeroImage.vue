@@ -39,7 +39,7 @@ Display a full width image with parallax scroll.
           "animations": [{
             "selector": "#parallaxImage-{{id}}",
             "keyframes": [{
-              "transform": "translateY(-50%)"
+              "transform": "translateY(-100%)"
             }]
           }]
         }
@@ -90,7 +90,8 @@ export default {
 }
 
 .hero-image__window amp-img {
-  margin-bottom: -20%;
+  margin-bottom: -25%;
+  margin-top: 10%;
 }
 
 .hero-image__title-panel {
