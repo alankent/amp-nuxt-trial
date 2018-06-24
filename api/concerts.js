@@ -9,7 +9,7 @@ Generates one month of concerts in the future, then filters it based on search c
 */
 app.get('/concerts', (req, res) => {
 
-  let data = [
+  let oneWeekData = [
     {
       "day": 0,
       "venue": "The Local Pub",
@@ -51,6 +51,24 @@ app.get('/concerts', (req, res) => {
       "available": false
     }
   ];
+
+  let data = oneWeekData.concat(
+      oneWeekData.map(({day, venue, available}) => {
+        return { day: day + 7, venue, available };
+      }),
+      oneWeekData.map(({day, venue, available}) => {
+        return { day: day + 14, venue, available };
+      }),
+      oneWeekData.map(({day, venue, available}) => {
+        return { day: day + 21, venue, available };
+      }),
+      oneWeekData.map(({day, venue, available}) => {
+        return { day: day + 28, venue, available };
+      }),
+      oneWeekData.map(({day, venue, available}) => {
+        return { day: day + 35, venue, available };
+      })
+  );
 
   const now = new Date();
 
